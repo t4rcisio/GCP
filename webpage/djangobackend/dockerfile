@@ -19,4 +19,4 @@ ENV PYTHONUNBUFFERED=1
 ENV PORT=8080
 
 # Comando para iniciar o servidor Django
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "meuprojeto.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "ai_api.wsgi:application"]
