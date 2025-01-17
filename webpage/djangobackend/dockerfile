@@ -1,0 +1,22 @@
+# Use uma imagem base do Python
+FROM python:3.10-slim
+
+# Defina o diretório de trabalho
+WORKDIR /app
+
+# Copie o código do projeto
+COPY . .
+
+# Instale as dependências
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+# Exponha a porta onde o Django será executado
+EXPOSE 8080
+
+# Defina a variável de ambiente para o Django
+ENV PYTHONUNBUFFERED=1
+ENV PORT=8080
+
+# Comando para iniciar o servidor Django
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "meuprojeto.wsgi:application"]
